@@ -1,0 +1,9 @@
+venv/
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+data/*.csv
+models/*.pkl
+models/*.pt
+mlruns/
+.streamlit/
