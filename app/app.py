@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import joblib
 import plotly.graph_objects as go
+import os
 
 # Configuração da página
 st.set_page_config(
@@ -14,9 +15,10 @@ st.set_page_config(
 # Carregar modelo e scaler
 @st.cache_resource
 def load_model():
-    model = joblib.load('../models/gradient_boosting_churn.pkl')
-    scaler = joblib.load('../models/scaler.pkl')
-    feature_names = joblib.load('../models/feature_names.pkl')
+    base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    model = joblib.load(os.path.join(base_path, 'models', 'gradient_boosting_churn.pkl'))
+    scaler = joblib.load(os.path.join(base_path, 'models', 'scaler.pkl'))
+    feature_names = joblib.load(os.path.join(base_path, 'models', 'feature_names.pkl'))
     return model, scaler, feature_names
 
 model, scaler, feature_names = load_model()
